@@ -15,7 +15,7 @@
 @property (nonatomic) GLfloat xAxis;
 @property (nonatomic) GLfloat yAxis;
 
-//@property (nonatomic,weak) GLKBaseEffect *baseEffect;
+@property (nonatomic,weak) GLKBaseEffect *baseEffect;
 
 @end
 

@@ -8,13 +8,6 @@
 
 #import "EllipseShader.h"
 
-static GLfloat const RWTBaseShaderQuad[8] = {
-    -1.f, -1.f,
-    -1.f, +1.f,
-    +1.f, -1.f,
-    +1.f, +1.f,
-};
-
 @interface EllipseShader ()
 
 // Program Handle
@@ -59,8 +52,17 @@ static GLfloat const RWTBaseShaderQuad[8] = {
     
     // Uniforms
     glUniform2f(self.uResolution, CGRectGetWidth(rect)*2.f, CGRectGetHeight(rect)*2.f);
-    glUniform1f(self.xAxis, xAxis);
-    glUniform1f(self.yAxis, yAxis);
+//    NSLog(@"CGRectGetWidth: %f  CGRectGetHeight: %f",CGRectGetWidth(rect),CGRectGetHeight(rect));
+//    glUniform2f(self.uResolution, 400, 160);
+    glUniform1f(self.xAxis, 200);
+    glUniform1f(self.yAxis, 80);
+    
+    self.baseEffect = [[GLKBaseEffect alloc] init];
+    GLKMatrix4 scaleMatrix2 = GLKMatrix4MakeScale(0.5, 0.5, 1);
+    GLKMatrix4 transMatrix2 = GLKMatrix4MakeTranslation(0.28, 0.25, 0);
+    self.baseEffect.transform.modelviewMatrix = GLKMatrix4Multiply(transMatrix2, scaleMatrix2);
+//    self.baseEffect.transform.modelviewMatrix = self.modelMatrix;
+//    [self.baseEffect prepareToDraw];
     
     // Draw
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 6);
@@ -72,9 +74,16 @@ static GLfloat const RWTBaseShaderQuad[8] = {
     // Program
     glUseProgram(_program);
     
+    static const GLfloat vertices[] = {
+        -1.0f, -1.0f,
+        1.0f, -1.0f,
+        -1.0f,  1.0f,
+        1.0f,  1.0f,
+    };
+    
     // Attributes
     glEnableVertexAttribArray(_aPosition);
-    glVertexAttribPointer(_aPosition, 2, GL_FLOAT, GL_FALSE, 0, RWTBaseShaderQuad);
+    glVertexAttribPointer(_aPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
 }
 
 #pragma mark - Compile & Link
@@ -141,5 +150,16 @@ static GLfloat const RWTBaseShaderQuad[8] = {
     
     return shaderHandle;
 }
+
+- (GLKMatrix4) modelMatrix {
+    GLKMatrix4 modelMatrix = GLKMatrix4Identity;
+    modelMatrix = GLKMatrix4Translate(modelMatrix, self.position.x, self.position.y, 0);
+    return modelMatrix;
+}
+
+//- (void)update:(float)dt {
+//    GLKVector2 curMove = GLKVector2MultiplyScalar(self.moveVelocity, dt);
+//    self.position = GLKVector2Add(self.position, curMove);
+//}
 
 @end
