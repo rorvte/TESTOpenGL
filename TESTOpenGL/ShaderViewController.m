@@ -8,20 +8,6 @@
 
 #import "ShaderViewController.h"
 
-//typedef struct {
-//    GLKVector3 positionCoordinates;
-//    GLKVector2 textureCoordinates;
-//}VertexData;
-//
-//VertexData vertices[] = {
-//    {-0.5f, -0.5f, 0.0f},
-//    {0.5f, -0.5f, 0.0f},
-//    {-0.5f, 0.5f, 0.0f},
-//    {-0.5f, 0.5f, 0.0f},
-//    {0.5f, -0.5f, 0.0f},
-//    {0.5f, 0.5f, 0.0f}
-//};
-
 @implementation ShaderViewController
 
 - (void)viewDidLoad {
@@ -40,13 +26,13 @@
     
     // Initialize shader
     self.shader = [[EllipseShader alloc] initWithVertexShader:@"Base" fragmentShader:@"ellipse"];
-    self.shader.position = GLKVector2Make(10, 10);
+    // self.shader.position = GLKVector2Make(10, 10);
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
     glClear(GL_COLOR_BUFFER_BIT);
     
-    [self.shader renderInRect:rect withXAxis:self.xAxis withYAxis:self.yAxis];
+    [self.shader renderInRect:rect withXAxis:self.xAxis withYAxis:self.yAxis withScreenWidth:(GLfloat)self.screenWidth withScreenHeight:(GLfloat)self.screenHeight];
 }
 
 //- (void)update {

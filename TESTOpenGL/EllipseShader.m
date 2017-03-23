@@ -18,6 +18,8 @@
 
 // Uniform Handles
 @property (assign, nonatomic, readonly) GLuint uResolution;
+@property (assign, nonatomic, readonly) GLuint screenWidth;
+@property (assign, nonatomic, readonly) GLuint screenHeight;
 @property (assign, nonatomic, readonly) GLuint xAxis;
 @property (assign, nonatomic, readonly) GLuint yAxis;
 @property (assign, nonatomic, readonly) GLuint uTime;
@@ -38,9 +40,12 @@
         
         // Uniforms
         _uResolution = glGetUniformLocation(_program, "uResolution");
+        _screenWidth = glGetUniformLocation(_program, "screenWidth");
+        _screenHeight = glGetUniformLocation(_program, "screenHeight");
         _xAxis = glGetUniformLocation(_program, "xAxis");
         _yAxis = glGetUniformLocation(_program, "yAxis");
         _uTime = glGetUniformLocation(_program, "uTime");
+        _projectionUniform = glGetUniformLocation(_program, "Projection");
         [self configureOpenGLES];
     }
     return self;
@@ -48,24 +53,29 @@
 
 #pragma mark - Public
 #pragma mark - Render
-- (void)renderInRect:(CGRect)rect withXAxis:(GLfloat)xAxis withYAxis:(GLfloat)yAxis {
+- (void)renderInRect:(CGRect)rect withXAxis:(GLfloat)xAxis withYAxis:(GLfloat)yAxis withScreenWidth:(GLfloat)screenWidth withScreenHeight:(GLfloat)screenHeight{
     
     // Uniforms
-    glUniform2f(self.uResolution, CGRectGetWidth(rect)*2.f, CGRectGetHeight(rect)*2.f);
-//    NSLog(@"CGRectGetWidth: %f  CGRectGetHeight: %f",CGRectGetWidth(rect),CGRectGetHeight(rect));
-//    glUniform2f(self.uResolution, 400, 160);
+    glUniform2f(self.uResolution, 0.5, 0.5);
+   glUniform1f(self.screenWidth, screenWidth);
+   glUniform1f(self.screenHeight, screenHeight);
     glUniform1f(self.xAxis, 200);
     glUniform1f(self.yAxis, 80);
     
-    self.baseEffect = [[GLKBaseEffect alloc] init];
-    GLKMatrix4 scaleMatrix2 = GLKMatrix4MakeScale(0.5, 0.5, 1);
-    GLKMatrix4 transMatrix2 = GLKMatrix4MakeTranslation(0.28, 0.25, 0);
-    self.baseEffect.transform.modelviewMatrix = GLKMatrix4Multiply(transMatrix2, scaleMatrix2);
+//    self.baseEffect = [[GLKBaseEffect alloc] init];
+//    GLKMatrix4 scaleMatrix2 = GLKMatrix4MakeScale(0.5, 0.5, 1);
+//    GLKMatrix4 transMatrix2 = GLKMatrix4MakeTranslation(0.28, 0.25, 0);
+//    self.baseEffect.transform.modelviewMatrix = GLKMatrix4Multiply(transMatrix2, scaleMatrix2);
 //    self.baseEffect.transform.modelviewMatrix = self.modelMatrix;
 //    [self.baseEffect prepareToDraw];
     
     // Draw
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 6);
+//    float translation[16] = { 1,  0,  0,  0,
+//        0,  1,  0,  0,
+//        0,  0,  1,  0,
+//        0.25, 0.5, 0, 1 };
+//    glUniformMatrix4fv(self.projectionUniform, 1, 0, &translation[0]);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
 #pragma mark - Private
