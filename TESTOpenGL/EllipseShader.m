@@ -56,17 +56,9 @@
 - (void)renderInRect:(CGRect)rect withXAxis:(GLfloat)xAxis withYAxis:(GLfloat)yAxis withScreenWidth:(GLfloat)screenWidth withScreenHeight:(GLfloat)screenHeight{
     
     // Uniforms
-<<<<<<< HEAD
     glUniform2f(self.uResolution, CGRectGetWidth(rect)*2.f, CGRectGetHeight(rect)*2.f);
     glUniform1f(self.screenWidth, screenWidth);
     glUniform1f(self.screenHeight, screenHeight);
-=======
-    glUniform2f(self.uResolution, 0.5, 0.5);
-   glUniform1f(self.screenWidth, screenWidth);
-   glUniform1f(self.screenHeight, screenHeight);
->>>>>>> origin/master
-    glUniform1f(self.xAxis, 200);
-    glUniform1f(self.yAxis, 80);
     
 //    self.baseEffect = [[GLKBaseEffect alloc] init];
 //    GLKMatrix4 scaleMatrix2 = GLKMatrix4MakeScale(0.5, 0.5, 1);
@@ -76,22 +68,8 @@
 //    [self.baseEffect prepareToDraw];
     
     // Draw
-<<<<<<< HEAD
 //    glDrawArrays(GL_TRIANGLE_STRIP, 0, 6);
      glDrawArrays(GL_TRIANGLES, 0, 3);
-
-=======
->>>>>>> origin/master
-//    float translation[16] = { 1,  0,  0,  0,
-//        0,  1,  0,  0,
-//        0,  0,  1,  0,
-//        0.25, 0.5, 0, 1 };
-//    glUniformMatrix4fv(self.projectionUniform, 1, 0, &translation[0]);
-<<<<<<< HEAD
-//    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-=======
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
->>>>>>> origin/master
 }
 
 #pragma mark - Private
