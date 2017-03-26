@@ -8,8 +8,6 @@ uniform float yAxis;
 
 void main(void) {
 //    vec2 center = vec2(uResolution.x/2., uResolution.y/2.);
-<<<<<<< HEAD
-<<<<<<< HEAD
     
      gl_FragColor = vec4(vec3(0.,0.,0.), 1.);
     
@@ -21,24 +19,5 @@ void main(void) {
 //        //black
 //        gl_FragColor = vec4(vec3(0.,0.,0.), 1.);
 //    }
-=======
-    vec2 center = vec2(screenWidth, screenHeight);
-    float x = gl_FragCoord.x;
-    float y = gl_FragCoord.y;
-    
-=======
-    vec2 center = vec2(screenWidth, screenHeight);
-    float x = gl_FragCoord.x;
-    float y = gl_FragCoord.y;
-    
->>>>>>> origin/master
-    if (pow(x-center.x, 2.)/pow(xAxis, 2.)+pow(y-center.y, 2.)/pow(yAxis, 2.) > 1. || pow(x-center.x, 2.)/pow(xAxis, 2.)+pow(y-center.y, 2.)/pow(yAxis, 2.) < 48./50.) {
-        //white
-        gl_FragColor = vec4(vec3(1.,1.,1.), 0.);
-        discard;
-    }else {
-        //black
-        gl_FragColor = vec4(vec3(0.,0.,0.), 1.);
-    }
->>>>>>> origin/master
+
 }
