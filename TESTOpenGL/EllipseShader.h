@@ -9,18 +9,13 @@
 
 @interface EllipseShader : NSObject
 
-//- (id)initWithEffect:(GLKBaseEffect *)baseEffect;
-- (void)update:(float)dt;
-
 @property (strong, nonatomic) GLKBaseEffect *baseEffect;
-
-//@property (nonatomic) GLuint projectionUniform;
 @property (assign) GLKVector2 position;
-//@property (nonatomic, strong) GLKTextureInfo *textureInfo;
-
 @property (assign) GLKVector2 moveVelocity;
 
 - (instancetype)initWithVertexShader:(NSString*)vsh fragmentShader:(NSString*)fsh;
 - (void)renderInRect:(CGRect)rect withXAxis:(GLfloat)xAxis withYAxis:(GLfloat)yAxis;
+
+- (void)update:(float)dt;
 
 @end

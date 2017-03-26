@@ -8,20 +8,6 @@
 
 #import "ShaderViewController.h"
 
-//typedef struct {
-//    GLKVector3 positionCoordinates;
-//    GLKVector2 textureCoordinates;
-//}VertexData;
-//
-//VertexData vertices[] = {
-//    {-0.5f, -0.5f, 0.0f},
-//    {0.5f, -0.5f, 0.0f},
-//    {-0.5f, 0.5f, 0.0f},
-//    {-0.5f, 0.5f, 0.0f},
-//    {0.5f, -0.5f, 0.0f},
-//    {0.5f, 0.5f, 0.0f}
-//};
-
 @implementation ShaderViewController
 
 - (void)viewDidLoad {

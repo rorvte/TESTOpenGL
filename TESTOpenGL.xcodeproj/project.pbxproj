@@ -353,6 +353,7 @@
 				C3C4A5CB1E7D4C50004EA806 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

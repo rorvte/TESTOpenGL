@@ -52,20 +52,19 @@
     
     // Uniforms
     glUniform2f(self.uResolution, CGRectGetWidth(rect)*2.f, CGRectGetHeight(rect)*2.f);
-//    NSLog(@"CGRectGetWidth: %f  CGRectGetHeight: %f",CGRectGetWidth(rect),CGRectGetHeight(rect));
-//    glUniform2f(self.uResolution, 400, 160);
     glUniform1f(self.xAxis, 200);
     glUniform1f(self.yAxis, 80);
     
-    self.baseEffect = [[GLKBaseEffect alloc] init];
-    GLKMatrix4 scaleMatrix2 = GLKMatrix4MakeScale(0.5, 0.5, 1);
-    GLKMatrix4 transMatrix2 = GLKMatrix4MakeTranslation(0.28, 0.25, 0);
-    self.baseEffect.transform.modelviewMatrix = GLKMatrix4Multiply(transMatrix2, scaleMatrix2);
+//    self.baseEffect = [[GLKBaseEffect alloc] init];
+//    GLKMatrix4 scaleMatrix2 = GLKMatrix4MakeScale(0.5, 0.5, 1);
+//    GLKMatrix4 transMatrix2 = GLKMatrix4MakeTranslation(0.28, 0.25, 0);
+//    self.baseEffect.transform.modelviewMatrix = GLKMatrix4Multiply(transMatrix2, scaleMatrix2);
 //    self.baseEffect.transform.modelviewMatrix = self.modelMatrix;
 //    [self.baseEffect prepareToDraw];
     
     // Draw
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 6);
+//    glDrawArrays(GL_TRIANGLE_STRIP, 0, 6);
+     glDrawArrays(GL_TRIANGLES, 0, 3);
 }
 
 #pragma mark - Private
@@ -74,11 +73,17 @@
     // Program
     glUseProgram(_program);
     
+//    static const GLfloat vertices[] = {
+//        -1.0f, -1.0f,
+//        1.0f, -1.0f,
+//        -1.0f,  1.0f,
+//        1.0f,  1.0f,
+//    };
+    
     static const GLfloat vertices[] = {
-        -1.0f, -1.0f,
-        1.0f, -1.0f,
-        -1.0f,  1.0f,
-        1.0f,  1.0f,
+        0.0f, 0.0f,
+        1.0f, 0.0f,
+        0.0f,  1.0f,
     };
     
     // Attributes
