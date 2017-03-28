@@ -224,7 +224,7 @@
 		C3C4A5C71E7D4C50004EA806 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -271,7 +271,7 @@
 		C3C4A5C81E7D4C50004EA806 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -312,10 +312,13 @@
 		C3C4A5CA1E7D4C50004EA806 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = VTL66H26EA;
 				GCC_PREFIX_HEADER = TESTOpenGL/PrefixHeader.pch;
+				"HEADER_SEARCH_PATHS[sdk=iphonesimulator*]" = "";
 				INFOPLIST_FILE = TESTOpenGL/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rorvte.TESTOpenGL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -325,10 +328,13 @@
 		C3C4A5CB1E7D4C50004EA806 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = VTL66H26EA;
 				INFOPLIST_FILE = TESTOpenGL/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rorvte.TESTOpenGL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

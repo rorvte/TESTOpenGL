@@ -18,8 +18,6 @@
 
 // Uniform Handles
 @property (assign, nonatomic, readonly) GLuint uResolution;
-@property (assign, nonatomic, readonly) GLuint screenWidth;
-@property (assign, nonatomic, readonly) GLuint screenHeight;
 @property (assign, nonatomic, readonly) GLuint xAxis;
 @property (assign, nonatomic, readonly) GLuint yAxis;
 @property (assign, nonatomic, readonly) GLuint uTime;
@@ -40,12 +38,10 @@
         
         // Uniforms
         _uResolution = glGetUniformLocation(_program, "uResolution");
-        _screenWidth = glGetUniformLocation(_program, "screenWidth");
-        _screenHeight = glGetUniformLocation(_program, "screenHeight");
         _xAxis = glGetUniformLocation(_program, "xAxis");
         _yAxis = glGetUniformLocation(_program, "yAxis");
         _uTime = glGetUniformLocation(_program, "uTime");
-        _projectionUniform = glGetUniformLocation(_program, "Projection");
+        
         [self configureOpenGLES];
     }
     return self;
@@ -53,23 +49,14 @@
 
 #pragma mark - Public
 #pragma mark - Render
-- (void)renderInRect:(CGRect)rect withXAxis:(GLfloat)xAxis withYAxis:(GLfloat)yAxis withScreenWidth:(GLfloat)screenWidth withScreenHeight:(GLfloat)screenHeight{
+- (void)renderInRect:(CGRect)rect{
     
     // Uniforms
     glUniform2f(self.uResolution, CGRectGetWidth(rect)*2.f, CGRectGetHeight(rect)*2.f);
-    glUniform1f(self.screenWidth, screenWidth);
-    glUniform1f(self.screenHeight, screenHeight);
-    
-//    self.baseEffect = [[GLKBaseEffect alloc] init];
-//    GLKMatrix4 scaleMatrix2 = GLKMatrix4MakeScale(0.5, 0.5, 1);
-//    GLKMatrix4 transMatrix2 = GLKMatrix4MakeTranslation(0.28, 0.25, 0);
-//    self.baseEffect.transform.modelviewMatrix = GLKMatrix4Multiply(transMatrix2, scaleMatrix2);
-//    self.baseEffect.transform.modelviewMatrix = self.modelMatrix;
-//    [self.baseEffect prepareToDraw];
     
     // Draw
 //    glDrawArrays(GL_TRIANGLE_STRIP, 0, 6);
-     glDrawArrays(GL_TRIANGLES, 0, 3);
+      glDrawArrays(GL_TRIANGLE_FAN, 0, 362);
 }
 
 #pragma mark - Private
@@ -85,15 +72,61 @@
 //        1.0f,  1.0f,
 //    };
     
-    static const GLfloat vertices[] = {
-        0.0f, 0.0f,
-        1.0f, 0.0f,
-        0.0f,  1.0f,
-    };
+//    NSMutableArray *verticesV = [[NSMutableArray alloc] init];
+//    Vertex *Vertices;
+//    int array = 1000;
+//    Vertices = (Vertex *)malloc(array * sizeof(Vertex));
+    
+    
+//    for (int i=0;i<1000;++i) {
+////        Vertices[i].position = [NSNumber numberWithDouble:cos(2*3.14159*i/1000.0)];
+////        Vertices[i+1].position = [NSNumber numberWithDouble:sin(2*3.14159*i/1000.0)];
+//        Vertices[i].position = (CGFloat)cos(2*3.14159*i/1000.0);
+//        Vertices[i+1].position = (CGFloat)sin(2*3.14159*i/1000.0);
+//        
+//        const GLfloat Ha[] = {
+//            Vertices[i].position, Vertices[i+1].position
+//        };
+//
+//        glEnableVertexAttribArray(_aPosition);
+//        glVertexAttribPointer(_aPosition, 2, GL_FLOAT, GL_FALSE, 0, Ha);
+//        glDrawArrays(GL_POINTS, 0, 2);
+//    };
+    
+    //draw circle
+    GLint numberOfSides = 360;
+    GLint numberOfVertices = numberOfSides+2;
+    GLfloat circleVerticesX[numberOfVertices];
+    GLfloat circleVerticesY[numberOfVertices];
+//    GLfloat circleVerticesZ[numberOfVertices];
+    
+    GLfloat x = 20.f;
+    GLfloat y = 20.f;
+    
+    circleVerticesX[0] = x;
+    circleVerticesY[0] = y;
+//    circleVerticesZ[0] = 0;
+    
+    GLfloat doublePi = 2.0f * M_PI;
+    
+    for(int i=1; i<numberOfVertices; i++){
+        circleVerticesX[i] = x + 120.0f * cos(i*doublePi/numberOfSides);
+        circleVerticesY[i] = y + 120.0f * sin(i*doublePi/numberOfSides);
+//        circleVerticesZ[i] = 0;
+    }
+    
+    GLfloat allCircleVertices[numberOfVertices * 2];
+    
+    for(int i = 0;i<numberOfVertices;i++){
+        allCircleVertices[i*2] = circleVerticesX[i];
+        allCircleVertices[i*2+1] = circleVerticesY[i];
+//        allCircleVertices[i*2+2] = circleVerticesZ[i];
+    }
     
     // Attributes
     glEnableVertexAttribArray(_aPosition);
-    glVertexAttribPointer(_aPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
+    glVertexAttribPointer(_aPosition, 2, GL_FLOAT, GL_FALSE, 0, allCircleVertices);
+//    glDrawArrays(GL_TRIANGLE_FAN, 0, numberOfVertices);
 }
 
 #pragma mark - Compile & Link
@@ -161,15 +194,5 @@
     return shaderHandle;
 }
 
-- (GLKMatrix4) modelMatrix {
-    GLKMatrix4 modelMatrix = GLKMatrix4Identity;
-    modelMatrix = GLKMatrix4Translate(modelMatrix, self.position.x, self.position.y, 0);
-    return modelMatrix;
-}
-
-//- (void)update:(float)dt {
-//    GLKVector2 curMove = GLKVector2MultiplyScalar(self.moveVelocity, dt);
-//    self.position = GLKVector2Add(self.position, curMove);
-//}
 
 @end

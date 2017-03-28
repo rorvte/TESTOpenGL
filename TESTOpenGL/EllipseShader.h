@@ -9,11 +9,8 @@
 
 @interface EllipseShader : NSObject
 
-@property (nonatomic) GLuint projectionUniform;
 @property (assign) GLKVector2 position;
 - (instancetype)initWithVertexShader:(NSString*)vsh fragmentShader:(NSString*)fsh;
-- (void)renderInRect:(CGRect)rect withXAxis:(GLfloat)xAxis withYAxis:(GLfloat)yAxis withScreenWidth:(GLfloat)screenWidth withScreenHeight:(GLfloat)screenHeight;
-
-- (void)update:(float)dt;
+- (void)renderInRect:(CGRect)rect;
 
 @end

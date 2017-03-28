@@ -14,10 +14,6 @@
 @property (strong, nonatomic, readwrite) EllipseShader* shader;
 @property (nonatomic) GLfloat xAxis;
 @property (nonatomic) GLfloat yAxis;
-@property (nonatomic) GLfloat screenWidth;
-@property (nonatomic) GLfloat screenHeight;
-
-@property (nonatomic,weak) GLKBaseEffect *baseEffect;
 
 @end
 

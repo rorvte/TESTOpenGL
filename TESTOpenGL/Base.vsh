@@ -4,6 +4,6 @@ attribute vec2 aPosition;
 //uniform mat4 Projection;
 
 void main(void) {
-    gl_Position = vec4(aPosition, 0., 1.);
 //    gl_Position = Projection * vec4(aPosition, 0., 1.);
+    gl_Position = vec4(aPosition, 0., 1.);
 }
