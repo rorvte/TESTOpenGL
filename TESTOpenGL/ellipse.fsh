@@ -5,9 +5,9 @@ uniform float xAxis;
 uniform float yAxis;
 
 void main(void) {
-    vec2 center = vec2(uResolution.x/2., uResolution.y/2.);
-    
-//     gl_FragColor = vec4(vec3(0.,0.,0.), 1.);
+    vec2 center = vec2(uResolution.x, uResolution.y);
+    vec2 uRe2 = uResolution;
+//    vec2 center = vec2(0, 0);
     
     if (pow(gl_FragCoord.x-center.x, 2.)/pow(xAxis, 2.)+pow(gl_FragCoord.y-center.y, 2.)/pow(yAxis, 2.) > 1. || pow(gl_FragCoord.x-center.x, 2.)/pow(xAxis, 2.)+pow(gl_FragCoord.y-center.y, 2.)/pow(yAxis, 2.) < 48./50.) {
         //white
