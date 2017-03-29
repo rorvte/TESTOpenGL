@@ -30,10 +30,10 @@
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
-//    glViewport(0., 0., 480., 320.);
+//    glViewport(0., 0., CGRectGetWidth(rect), CGRectGetHeight(rect));
     glClear(GL_COLOR_BUFFER_BIT);
     
-    [self.shader renderInRect:rect];
+    [self.shader renderInRect:(CGRect)rect withXAxis:self.xAxis withYAxis:self.yAxis];
 }
 
 

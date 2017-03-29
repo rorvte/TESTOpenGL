@@ -11,6 +11,6 @@
 
 @property (assign) GLKVector2 position;
 - (instancetype)initWithVertexShader:(NSString*)vsh fragmentShader:(NSString*)fsh;
-- (void)renderInRect:(CGRect)rect;
+- (void)renderInRect:(CGRect)rect withXAxis:(GLfloat)xAxis withYAxis:(GLfloat)yAxis;
 
 @end
