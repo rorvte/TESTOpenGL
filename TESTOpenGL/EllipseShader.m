@@ -53,12 +53,12 @@
     
     // Uniforms
     glUniform2f(self.uResolution, CGRectGetWidth(rect)*2.f, CGRectGetHeight(rect)*2.f);
-    glUniform1f(self.xAxis, 200);
+    glUniform1f(self.xAxis, 160);
     glUniform1f(self.yAxis, 100);
     
     // Draw
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-//      glDrawArrays(GL_TRIANGLE_FAN, 0, 30);
+//    glDrawArrays(GL_TRIANGLE_STRIP, 0, 5);
+      glDrawArrays(GL_TRIANGLE_FAN, 0, 7);
 }
 
 #pragma mark - Private
@@ -68,60 +68,15 @@
     glUseProgram(_program);
     
     static const GLfloat vertices[] = {
-        -1.0f, -1.0f,
-        1.0f, -1.0f,
-        -1.0f,  1.0f,
-        1.0f, 1.0f
+        0.0f, 0.0f,
+        0.5f, 0.5f,
+        -0.5f,  0.5f,
+        -0.5f, -0.5f,
+        0.5f, -0.5f
     };
-    
-//    NSMutableArray *verticesV = [[NSMutableArray alloc] init];
-//    Vertex *Vertices;
-//    int array = 1000;
-//    Vertices = (Vertex *)malloc(array * sizeof(Vertex));
-    
-    
-//    for (int i=0;i<1000;++i) {
-////        Vertices[i].position = [NSNumber numberWithDouble:cos(2*3.14159*i/1000.0)];
-////        Vertices[i+1].position = [NSNumber numberWithDouble:sin(2*3.14159*i/1000.0)];
-//        Vertices[i].position = (CGFloat)cos(2*3.14159*i/1000.0);
-//        Vertices[i+1].position = (CGFloat)sin(2*3.14159*i/1000.0);
-//        
-//        const GLfloat Ha[] = {
-//            Vertices[i].position, Vertices[i+1].position
-//        };
-//
-//        glEnableVertexAttribArray(_aPosition);
-//        glVertexAttribPointer(_aPosition, 2, GL_FLOAT, GL_FALSE, 0, Ha);
-//        glDrawArrays(GL_POINTS, 0, 2);
-//    };
-    
-    //draw circle
-//    GLint vertexCount = 30;
-//    GLint numberOfSides = vertexCount -2;
-//    GLint numberOfVertices = numberOfSides+2;
-//    GLfloat circleVerticesX[numberOfVertices];
-//    GLfloat circleVerticesY[numberOfVertices];
-//    GLfloat x = 1.;
-//    GLfloat y = 1.;
-    
-//    int idx = 0;
-//    
-//    GLfloat allCircleVertices[vertexCount * 2];
-//    
-//    allCircleVertices[idx++] = 0.0;
-//    allCircleVertices[idx++] = 0.0;
-//    
-//    
-//    GLfloat doublePi = 2.0f * M_PI;
-//    
-//    for(int i = 0;i<vertexCount-1;++i){
-//        allCircleVertices[idx++] = 0 + (1. * cos(i*doublePi/numberOfSides));
-//        allCircleVertices[idx++] = 0 + (1. * sin(i*doublePi/numberOfSides));
-//    }
     
     // Attributes
     glEnableVertexAttribArray(_aPosition);
-//    glVertexAttribPointer(_aPosition, 2, GL_FLOAT, GL_FALSE, 0, allCircleVertices);
     glVertexAttribPointer(_aPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
 }
 
