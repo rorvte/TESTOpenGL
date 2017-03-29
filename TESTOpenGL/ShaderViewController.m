@@ -22,7 +22,7 @@
     glkView.context = context;
     
     // OpenGL ES settings
-    glClearColor(1.0f, 1.0f, 1.0f, 0.f);
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     
     // Initialize shader
     self.shader = [[EllipseShader alloc] initWithVertexShader:@"Base" fragmentShader:@"ellipse"];

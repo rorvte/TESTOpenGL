@@ -21,8 +21,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+   
+    self.view.backgroundColor = [UIColor redColor];
     
     ShaderViewController *ellipseShaderVC = [[ShaderViewController alloc] init];
+    ellipseShaderVC.view.backgroundColor = [UIColor clearColor];
     [self.view addSubview:ellipseShaderVC.view];
     NSLog(@"view.frame: w:%f h:%f", self.view.frame.size.height, self.view.frame.size.width);
 }
