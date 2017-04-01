@@ -52,12 +52,12 @@
 - (void)renderInRect:(CGRect)rect withXAxis:(GLfloat)xAxis withYAxis:(GLfloat)yAxis{
     
     // Uniforms
-    glUniform2f(self.uResolution, CGRectGetWidth(rect)*1.5, CGRectGetHeight(rect)*0.5);
-    glUniform1f(self.xAxis, 200);
-    glUniform1f(self.yAxis, 160);
+    glUniform2f(self.uResolution, CGRectGetWidth(rect), CGRectGetHeight(rect));
+    glUniform1f(self.xAxis, 120);
+    glUniform1f(self.yAxis, 200);
     
     // Draw
-      glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
 #pragma mark - Private
@@ -66,37 +66,11 @@
     // Program
     glUseProgram(_program);
     
-    //第一象限  x，y半轴增大
-//    static const GLfloat vertices[] = {
-//        0.0f, 0.0f,
-//        0.0f, 1.0f,
-//        1.0f, 1.0f,
-//        1.0f, 0.0f
-//    };
-    
-    
-    //第二象限 x半轴缩小 y半轴增大
-//    static const GLfloat vertices[] = {
-//        0.0f, 0.0f,
-//        0.0f, 1.0f,
-//        -1.0f, 1.0f,
-//        -1.0f, 0.0f,
-//    };
-    
-    //第三象限 x，y半轴缩小
-    //    static const GLfloat vertices[] = {
-    //        0.0f, 0.0f,
-    //        0.0f, -1.0f,
-    //        -1.0f, -1.0f,
-    //        -1.0f, 0.0f,
-    //    };
-    
-    //第四象限  y半轴缩小
     static const GLfloat vertices[] = {
-        0.0f, 0.0f,
-        0.0f, -1.0f,
+        -1.0f, -1.0f,
         1.0f, -1.0f,
-        1.0f, 0.0f,
+        -1.0f, 1.0f,
+        1.0f, 1.0f
     };
     
     

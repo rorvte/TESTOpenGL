@@ -26,11 +26,10 @@
     
     // Initialize shader
     self.shader = [[EllipseShader alloc] initWithVertexShader:@"Base" fragmentShader:@"ellipse"];
-    // self.shader.position = GLKVector2Make(10, 10);
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
-//    glViewport(0., 0., CGRectGetWidth(rect), CGRectGetHeight(rect));
+    
     glClear(GL_COLOR_BUFFER_BIT);
     
     [self.shader renderInRect:(CGRect)rect withXAxis:self.xAxis withYAxis:self.yAxis];

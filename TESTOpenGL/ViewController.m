@@ -21,8 +21,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-   
-    self.view.backgroundColor = [UIColor redColor];
     
     ShaderViewController *ellipseShaderVC = [[ShaderViewController alloc] init];
     ellipseShaderVC.view.backgroundColor = [UIColor clearColor];
