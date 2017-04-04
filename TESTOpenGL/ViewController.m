@@ -25,6 +25,7 @@
     ShaderViewController *ellipseShaderVC = [[ShaderViewController alloc] init];
     ellipseShaderVC.view.backgroundColor = [UIColor clearColor];
     [self.view addSubview:ellipseShaderVC.view];
+//    ellipseShaderVC.view.transform = CGAffineTransformMakeRotation(20 * M_PI/180);
     NSLog(@"view.frame: w:%f h:%f", self.view.frame.size.height, self.view.frame.size.width);
 }
 

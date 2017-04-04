@@ -33,7 +33,9 @@
     glClear(GL_COLOR_BUFFER_BIT);
     
     [self.shader renderInRect:(CGRect)rect withXAxis:self.xAxis withYAxis:self.yAxis];
+
 }
+
 
 
 @end

@@ -21,6 +21,7 @@
 @property (assign, nonatomic, readonly) GLuint xAxis;
 @property (assign, nonatomic, readonly) GLuint yAxis;
 @property (assign, nonatomic, readonly) GLuint uTime;
+@property (assign, nonatomic, readonly) GLuint uProjection;
 
 @end
 
@@ -30,6 +31,7 @@
 - (instancetype)initWithVertexShader:(NSString *)vsh fragmentShader:(NSString *)fsh {
     self = [super init];
     if (self) {
+        
         // Program
         _program = [self programWithVertexShader:vsh fragmentShader:fsh];
         
@@ -60,6 +62,7 @@
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
+
 #pragma mark - Private
 #pragma mark - Configurations
 - (void)configureOpenGLES {
@@ -72,6 +75,16 @@
         -1.0f, 1.0f,
         1.0f, 1.0f
     };
+    
+    static const GLfloat colors[] = {
+        0.0f, 0.0f, 0.0f, 1.0f
+    };
+    
+//    static const GLfloat vertices[] = {
+//        -0.5f, -0.5f,
+//        0.5f, -0.5f,
+//        -0.5f, 0.5f,
+//    };
     
     
     // Attributes
